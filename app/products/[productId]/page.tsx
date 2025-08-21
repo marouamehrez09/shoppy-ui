@@ -11,7 +11,7 @@ interface SingleProductProps {
 
 export default async function SingleProduct({ params }: SingleProductProps) {
   //const product = await getProduct(+params.productId);
-  const { productId } = await params;   //  on attend params
+  const { productId } =  params;   //  on attend params
   const product = await getProduct(+productId);
 
   return (
