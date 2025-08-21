@@ -4,14 +4,17 @@ import getProduct from "./get-product";
 import Image from "next/image";
 import { getProductImage } from "../interfaces/product-image";
 import Checkout from "@/app/checkout/checkout";
+import { JSX } from "react";
 
 interface SingleProductProps {
   params: { productId: string };
 }
 
-export default async function SingleProduct({ params }: SingleProductProps) {
+export default async function SingleProduct({
+  params,
+}: SingleProductProps): Promise<JSX.Element> {
   //const product = await getProduct(+params.productId);
-  const { productId } =  params;   //  on attend params
+  const { productId } = params; //  on attend params
   const product = await getProduct(+productId);
 
   return (
