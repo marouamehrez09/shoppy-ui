@@ -23,15 +23,16 @@ export default async function login(
   if (!res.ok) {
     return { error: getErrorMessage({ response: parsedRes }) };
   }
-  setAuthCookie(res);
+  await setAuthCookie(res); // Await the async setAuthCookie function
   redirect("/");
 }
 
-const setAuthCookie = (response: Response) => {
+const setAuthCookie = async (response: Response) => {
   const setCookieHeader = response.headers.get("Set-Cookie");
   if (setCookieHeader) {
     const token = setCookieHeader.split(";")[0].split("=")[1];
-    cookies().set({
+    const cookieStore = await cookies(); // Await cookies() to get the Cookies interface
+    cookieStore.set({
       name: AUTHENTICATION_COOKIE,
       value: token,
       secure: true,

@@ -17,7 +17,7 @@ interface SingleProductProps {
 
 export default async function SingleProduct({
   params,
-}: SingleProductProps): Promise<JSX.Element> {
+}: SingleProductProps): Promise<React.JSX.Element> {
   // Await the params to get the actual productId
   const { productId } = await params; // Resolve the Promise
   const product = await getProduct(+productId);
