@@ -1,8 +1,14 @@
-export const getErrorMessage = ({ response }: { response: any }) => {
-  if (Array.isArray(response.message)) {
-    return formatErrorMessage(response.message[0]);
+export const getErrorMessage = ({ response }: { response: unknown }) => {
+  if (response && typeof response === "object" && "message" in response) {
+    const message = (response as { message: string | string[] }).message;
+
+    if (Array.isArray(message)) {
+      return formatErrorMessage(message[0]);
+    }
+    return formatErrorMessage(message);
   }
-  return "Unknown error occured";
+
+  return "Unknown error occurred";
 };
 
 const formatErrorMessage = (message: string) => {
