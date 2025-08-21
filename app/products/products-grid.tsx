@@ -38,11 +38,15 @@ export default function ProductGrid({ products }: ProductGridProps) {
 
   return (
     <Grid container spacing={3} sx={{ height: "85vh", overflow: "scroll" }}>
-      {products.map((product) => (
-        <Grid key={product.id} size={{ xs: 6, md: 4 }}>
-          <Product product={product} />
-        </Grid>
-      ))}
+      {Array.isArray(products) ? (
+        products.map((product) => (
+          <Grid key={product.id} size={{ xs: 6, md: 4 }}>
+            <Product product={product} />
+          </Grid>
+        ))
+      ) : (
+        <div>No products available</div> // Fallback UI
+      )}
     </Grid>
   );
 }
