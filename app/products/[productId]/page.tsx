@@ -1,20 +1,25 @@
+import React from "react";
 import { Stack, Typography, Grid } from "@mui/material";
-
 import getProduct from "./get-product";
 import Image from "next/image";
 import { getProductImage } from "../interfaces/product-image";
 import Checkout from "@/app/checkout/checkout";
-import { JSX } from "react";
 
+// Define the interface for the params
+interface SingleProductParams {
+  productId: string;
+}
+
+// Define the props interface for the page
 interface SingleProductProps {
-  params: { productId: string };
+  params: Promise<SingleProductParams>; // params is a Promise
 }
 
 export default async function SingleProduct({
   params,
 }: SingleProductProps): Promise<JSX.Element> {
-  //const product = await getProduct(+params.productId);
-  const { productId } = params; //  on attend params
+  // Await the params to get the actual productId
+  const { productId } = await params; // Resolve the Promise
   const product = await getProduct(+productId);
 
   return (
