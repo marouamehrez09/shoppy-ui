@@ -20,7 +20,7 @@ const styles = {
 
 const fileInputStyles: CSSProperties = {
   clip: "rect(0 0 0 0)",
-  clipPath: "insert(50%)",
+  clipPath: "inset(50%)",
   height: 1,
   overflow: "hidden",
   position: "absolute",
