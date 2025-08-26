@@ -18,7 +18,7 @@ export default function Product({ product }: ProductProps) {
       <CardActionArea className="p-4">
         <Stack>
           <Typography variant="h4">{product.name}</Typography>
-          {product?.imageExists && (
+          {product?.image && (
             <Image
               src={getProductImage(product.id)}
               className="w-full h-auto"

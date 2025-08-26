@@ -16,6 +16,7 @@ export default async function login(
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(Object.fromEntries(formData)),
+    credentials: "include", 
   });
 
   const parsedRes = await res.json();
