@@ -24,7 +24,7 @@ export default async function SingleProduct({
 
   return (
     <Grid container marginBottom={"2rem"} spacing={10}>
-      {product?.imageExists && (
+      {product?.image && (
         <Grid size={6}>
           <Image
             src={getProductImage(product.id)}
