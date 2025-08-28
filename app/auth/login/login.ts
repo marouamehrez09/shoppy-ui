@@ -10,13 +10,13 @@ import { AUTHENTICATION_COOKIE } from "../auth-cookie";
 
 export default async function login(
   _prevState: FormResponse,
-  formData: FormData
+  formData: FormData,
 ) {
   const res = await fetch(`${API_URL}/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(Object.fromEntries(formData)),
-    credentials: "include", 
+    credentials: "include",
   });
 
   const parsedRes = await res.json();

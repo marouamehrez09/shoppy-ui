@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 
 export default async function createUser(
   _prevState: FormResponse,
-  formData: FormData
+  formData: FormData,
 ) {
   const { error } = await post("users", formData);
   if (error) {

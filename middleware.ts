@@ -7,7 +7,7 @@ export function middleware(request: NextRequest) {
   const token = request.cookies.get("Authentication")?.value;
 
   const isUnauthenticatedRoute = unauthenticatedRoutes.some((route) =>
-    request.nextUrl.pathname.startsWith(route.path)
+    request.nextUrl.pathname.startsWith(route.path),
   );
 
   // 🔹 Si pas de token et on n’est pas sur une route publique → redirige vers /auth/login

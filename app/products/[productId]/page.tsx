@@ -24,10 +24,10 @@ export default async function SingleProduct({
 
   return (
     <Grid container marginBottom={"2rem"} spacing={10}>
-      {product?.imageExists && (
+      {product?.imageUrl && (
         <Grid size={6}>
           <Image
-            src={getProductImage(product.id)}
+            src={product.imageUrl}
             width={200}
             height={0}
             className="w-full h-auto sm:"

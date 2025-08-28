@@ -1,36 +1,29 @@
 "use server";
 
-import API_URL from "@/app/common/constants/api";
-import { getHeaders, post } from "@/app/common/util/fetch";
 import { revalidateTag } from "next/cache";
+import { post } from "@/app/common/util/fetch";
+import { uploadToCloudinary } from "@/app/common/util/cloudinary";
 
 export default async function createProduct(formData: FormData) {
-  // Extraire le fichier avant de convertir en objet
+  // Extraire le fichier image
   const productImage = formData.get("image") as File | null;
 
-  // Convertir les champs texte en objet
+  // Construire l’objet produit sans l’image
   const formObj = Object.fromEntries(formData.entries());
   formObj.price = String(Number(formObj.price));
+  delete formObj.image; 
 
-  // Envoyer le produit sans le fichier
-  const response = await post("products", formObj);
-
-  // Upload de l'image seulement si produit créé avec succès
-  if (productImage && !response.error) {
-    await uploadProductImage((await response).data.id, productImage);
+  // Upload image sur Cloudinary avant création du produit
+  let imageUrl: string | null = null;
+  if (productImage) {
+    imageUrl = await uploadToCloudinary(productImage);
+    console.log("✅ URL reçue de Cloudinary (frontend):", imageUrl);
   }
+
+  // Envoyer le produit au backend avec l’URL de Cloudinary
+  console.log("🚀 Produit envoyé au backend (frontend):", { ...formObj, image: imageUrl });
+  const response = await post("products", { ...formObj, image: imageUrl });
 
   revalidateTag("products");
   return response;
-}
-
-async function uploadProductImage(productId: number, file: File) {
-  const formData = new FormData();
-  formData.append("image", file);
-
-  await fetch(`${API_URL}/products/${productId}/image`, {
-    method: "POST",
-    body: formData,
-    headers: await getHeaders(), // attention : ne pas mettre 'Content-Type', FormData s'en occupe
-  });
 }

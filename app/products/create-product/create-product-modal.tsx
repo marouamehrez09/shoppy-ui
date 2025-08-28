@@ -1,7 +1,14 @@
 "use client";
 
 import { FormResponse } from "@/app/common/interfaces/form-response.interface";
-import { Box, Button, Modal, Stack, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Modal,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { CSSProperties, useState } from "react";
 import createProduct from "../actions/create-product";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";

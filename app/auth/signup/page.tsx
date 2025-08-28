@@ -7,16 +7,11 @@ import { useActionState } from "react";
 const initialState = { error: null };
 export default function Signup() {
   const [state, formAction] = useActionState(createUser, initialState);
-  console.log("state",state);
+  console.log("state", state);
   return (
     <form action={formAction} className="w-full max-w-xs">
       <Stack spacing={2}>
-        <TextField 
-          name="email" 
-          label="Email" 
-          variant="outlined" 
-          type="email" 
-          />
+        <TextField name="email" label="Email" variant="outlined" type="email" />
         <TextField
           name="password"
           label="Password"

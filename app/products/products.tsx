@@ -4,7 +4,5 @@ import ProductGrid from "./products-grid";
 export default async function Products() {
   const products = await getProducts();
 
-  return (
-    <ProductGrid products={products} />
-  );
+  return <ProductGrid products={products} />;
 }

@@ -7,6 +7,6 @@ export default async function getProducts() {
   return get<Product[]>(
     "products",
     ["products"],
-    new URLSearchParams({ status: "availible" })
+    new URLSearchParams({ status: "availible" }),
   );
 }

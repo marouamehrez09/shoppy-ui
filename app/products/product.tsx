@@ -18,9 +18,9 @@ export default function Product({ product }: ProductProps) {
       <CardActionArea className="p-4">
         <Stack>
           <Typography variant="h4">{product.name}</Typography>
-          {product?.image && (
+          {product?.imageUrl && (
             <Image
-              src={getProductImage(product.id)}
+              src={product.imageUrl}
               className="w-full h-auto"
               alt="Picture of the product"
               width={100}

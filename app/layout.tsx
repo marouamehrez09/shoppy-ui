@@ -23,7 +23,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   const isAuthenticated = await authenticated();
 
   return (
@@ -32,7 +31,9 @@ export default async function RootLayout({
         <Providers authenticated={isAuthenticated}>
           <CssBaseline />
           <Header logout={logout} />
-          <Container className={isAuthenticated ? 'mt-10' : ""}>{children}</Container>
+          <Container className={isAuthenticated ? "mt-10" : ""}>
+            {children}
+          </Container>
         </Providers>
       </body>
     </html>

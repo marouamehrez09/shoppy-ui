@@ -1,3 +1,3 @@
 export interface FormResponse {
-    error: string;
+  error: string;
 }
