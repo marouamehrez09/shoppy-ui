@@ -2,7 +2,6 @@ import React from "react";
 import { Stack, Typography, Grid } from "@mui/material";
 import getProduct from "./get-product";
 import Image from "next/image";
-import { getProductImage } from "../interfaces/product-image";
 import Checkout from "@/app/checkout/checkout";
 
 // Define the interface for the params
@@ -24,10 +23,10 @@ export default async function SingleProduct({
 
   return (
     <Grid container marginBottom={"2rem"} spacing={10}>
-      {product?.imageUrl && (
+      {product?.image && (
         <Grid size={6}>
           <Image
-            src={product.imageUrl}
+            src={product.image}
             width={200}
             height={0}
             className="w-full h-auto sm:"

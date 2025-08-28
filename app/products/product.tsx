@@ -3,7 +3,6 @@
 import { Card, CardActionArea, Stack, Typography } from "@mui/material";
 import { Product as IProduct } from "./interfaces/product.interface";
 import Image from "next/image";
-import { getProductImage } from "./interfaces/product-image";
 import { useRouter } from "next/navigation";
 
 interface ProductProps {
@@ -18,13 +17,14 @@ export default function Product({ product }: ProductProps) {
       <CardActionArea className="p-4">
         <Stack>
           <Typography variant="h4">{product.name}</Typography>
-          {product?.imageUrl && (
+          {product?.image && (
             <Image
-              src={product.imageUrl}
-              className="w-full h-auto"
-              alt="Picture of the product"
-              width={100}
-              height={100}
+            src={product.image}          // ton URL Cloudinary
+            alt={product.name}
+            width={400}                   // largeur standard
+            height={400}                  // hauteur standard
+            objectFit="cover"             // pour que l'image remplisse le carré
+            style={{ borderRadius: '8px' }} // optionnel pour arrondir
             />
           )}
           <Typography>{product.description}</Typography>

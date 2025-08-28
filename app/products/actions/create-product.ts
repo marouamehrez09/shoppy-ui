@@ -14,15 +14,15 @@ export default async function createProduct(formData: FormData) {
   delete formObj.image; 
 
   // Upload image sur Cloudinary avant création du produit
-  let imageUrl: string | null = null;
+  let image: string | null = null;
   if (productImage) {
-    imageUrl = await uploadToCloudinary(productImage);
-    console.log("✅ URL reçue de Cloudinary (frontend):", imageUrl);
+    image = await uploadToCloudinary(productImage);
+    console.log("✅ URL reçue de Cloudinary (frontend):", image);
   }
 
   // Envoyer le produit au backend avec l’URL de Cloudinary
-  console.log("🚀 Produit envoyé au backend (frontend):", { ...formObj, image: imageUrl });
-  const response = await post("products", { ...formObj, image: imageUrl });
+  console.log("🚀 Produit envoyé au backend (frontend):", { ...formObj, image: image });
+  const response = await post("products", { ...formObj, image: image });
 
   revalidateTag("products");
   return response;
