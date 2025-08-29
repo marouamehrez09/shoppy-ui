@@ -26,11 +26,11 @@ export default async function SingleProduct({
       {product?.image && (
         <Grid size={6}>
           <Image
-            src={product.image}
-            width={200}
-            height={0}
-            className="w-full h-auto sm:"
-            alt="Picture of the product"
+            src={product.image!} // l’URL Cloudinary
+            alt={product.name}
+            width={400}           // largeur fixe
+            height={400}          // hauteur fixe
+            style={{ objectFit: "cover" }}
           />
         </Grid>
       )}
