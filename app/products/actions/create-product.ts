@@ -17,11 +17,11 @@ export default async function createProduct(formData: FormData) {
   let image: string | null = null;
   if (productImage) {
     image = await uploadToCloudinary(productImage);
-    console.log("✅ URL reçue de Cloudinary (frontend):", image);
+    //console.log("✅ URL reçue de Cloudinary (frontend):", image);
   }
 
   // Envoyer le produit au backend avec l’URL de Cloudinary
-  console.log("🚀 Produit envoyé au backend (frontend):", { ...formObj, image: image });
+  //console.log("🚀 Produit envoyé au backend (frontend):", { ...formObj, image: image });
   const response = await post("products", { ...formObj, image: image });
 
   revalidateTag("products");
