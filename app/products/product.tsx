@@ -10,6 +10,7 @@ interface ProductProps {
 }
 
 export default function Product({ product }: ProductProps) {
+  console.log("🚀 ~ Product ~ product:", product);
   const router = useRouter();
 
   return (
@@ -19,12 +20,12 @@ export default function Product({ product }: ProductProps) {
           <Typography variant="h4">{product.name}</Typography>
           {product?.image && (
             <Image
-            src={product.image}          // ton URL Cloudinary
-            alt={product.name}
-            width={400}                   // largeur standard
-            height={400}                  // hauteur standard
-            objectFit="cover"             // pour que l'image remplisse le carré
-            style={{ borderRadius: '8px' }} // optionnel pour arrondir
+              src={product.image} // ton URL Cloudinary
+              alt={product.name}
+              width={400} // largeur standard
+              height={400} // hauteur standard
+              objectFit="cover" // pour que l'image remplisse le carré
+              style={{ borderRadius: "8px" }} // optionnel pour arrondir
             />
           )}
           <Typography>{product.description}</Typography>
