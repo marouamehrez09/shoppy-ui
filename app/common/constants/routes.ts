@@ -1,5 +1,9 @@
 export const unauthenticatedRoutes = [
   {
+    title: "Home",
+    path: "/",
+  },
+  {
     title: "Login",
     path: "/auth/login",
   },
@@ -10,7 +14,16 @@ export const unauthenticatedRoutes = [
 ];
 export const routes = [
   {
-    title: "Home",
-    path: "/",
+    title: "Buy Products",
+    path: "/buy_products",
+  },
+  {
+    title: "Profile",
+    path: "/profile",
+  },
+  ,
+  {
+    title: "Orders",
+    path: "/orders",
   },
 ];

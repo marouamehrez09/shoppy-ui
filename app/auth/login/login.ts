@@ -25,7 +25,7 @@ export default async function login(
     return { error: getErrorMessage({ response: parsedRes }) };
   }
   await setAuthCookie(res); // Await the async setAuthCookie function
-  redirect("/");
+  redirect("/buy_products");
 }
 
 const setAuthCookie = async (response: Response) => {

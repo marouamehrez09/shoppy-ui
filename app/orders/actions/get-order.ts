@@ -1,10 +1,10 @@
 "use server";
 
 import { get } from "@/app/common/util/fetch";
-import { Product } from "../interfaces/product.interface";
+import { Order } from "../interfaces/order-interface";
 
 export default async function getProducts() {
-  return get<Product[]>(
+  return get<[Order]>(
     "products",
     ["products"]
     // new URLSearchParams({ status: "availible" })

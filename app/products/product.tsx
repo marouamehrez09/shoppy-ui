@@ -10,7 +10,7 @@ interface ProductProps {
 }
 
 export default function Product({ product }: ProductProps) {
-  console.log("🚀 ~ Product ~ product:", product);
+  //console.log("🚀 ~ Product ~ product:", product);
   const router = useRouter();
 
   return (

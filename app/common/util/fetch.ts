@@ -3,6 +3,7 @@ import API_URL from "../constants/api";
 
 export const getHeaders = async () => {
   const cookieStore = await cookies();
+  console.log("Cookies:", cookieStore.toString());
   return {
     Cookie: cookieStore.toString(), // <-- singular 'Cookie'
   };
@@ -30,9 +31,10 @@ export const post = async (path: string, data: FormData | object) => {
 export const get = async <T>(
   path: string,
   tags: string[],
-  params?: URLSearchParams,
+  params?: URLSearchParams
 ) => {
   const url = params ? `${API_URL}/${path}?` + params : `${API_URL}/${path}`;
+  console.log("fetching", url);
   const res = await fetch(url, {
     headers: { ...(await getHeaders()) },
     next: { tags },

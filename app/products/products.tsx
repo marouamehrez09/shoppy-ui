@@ -3,6 +3,6 @@ import ProductGrid from "./products-grid";
 
 export default async function Products() {
   const products = await getProducts();
-  console.log("products", products);
+  //console.log("products", products);
   return <ProductGrid products={products} />;
 }

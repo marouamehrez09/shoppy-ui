@@ -3,6 +3,7 @@ import { Stack, Typography, Grid } from "@mui/material";
 import getProduct from "./get-product";
 import Image from "next/image";
 import Checkout from "@/app/checkout/checkout";
+import authenticated from "@/app/auth/actions/authenticated";
 
 // Define the interface for the params
 interface SingleProductParams {
@@ -20,7 +21,7 @@ export default async function SingleProduct({
   // Await the params to get the actual productId
   const { productId } = await params; // Resolve the Promise
   const product = await getProduct(+productId);
-
+  const isAuthenticated = await authenticated();
   return (
     <Grid container marginBottom={"2rem"} spacing={10}>
       {product?.image && (
@@ -28,8 +29,8 @@ export default async function SingleProduct({
           <Image
             src={product.image!} // l’URL Cloudinary
             alt={product.name}
-            width={400}           // largeur fixe
-            height={400}          // hauteur fixe
+            width={400} // largeur fixe
+            height={400} // hauteur fixe
             style={{ objectFit: "cover" }}
           />
         </Grid>
@@ -39,7 +40,7 @@ export default async function SingleProduct({
           <Typography variant="h2">{product.name}</Typography>
           <Typography>{product.description}</Typography>
           <Typography variant="h4">$ {product.price} </Typography>
-          <Checkout productId={product.id} />
+          {isAuthenticated && <Checkout productId={product.id} />}
         </Stack>
       </Grid>
     </Grid>
