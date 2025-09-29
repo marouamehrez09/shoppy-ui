@@ -1,4 +1,5 @@
-// get-me.ts
+import { User } from "../interfaces/user-interface";
+
 async function getMe(): Promise<User | null> {
   try {
     const res = await fetch("/api/me");
