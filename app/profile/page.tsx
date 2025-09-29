@@ -1,7 +1,8 @@
 import getMe from "../get-me";
+import {User } from "../profile/interfaces/user-interface"
 
 export default async function ProfilePage() {
-  const user = await getMe();
+  const user: User | null = await getMe();
 
   return (
     <div className="space-y-4">
