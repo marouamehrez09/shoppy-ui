@@ -1,4 +1,4 @@
-import getMe from "../get-me";
+import getMe from "../profile/interfaces/get-me";
 import {User } from "../profile/interfaces/user-interface"
 
 export default async function ProfilePage() {
