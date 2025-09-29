@@ -5,8 +5,8 @@ import { Order } from "../interfaces/order-interface";
 
 export default async function getOrders() {
   return get<[Order]>(
-    "products",
-    ["products"]
+    "orders",
+    ["orders"]
     // new URLSearchParams({ status: "availible" })
   );
 }
