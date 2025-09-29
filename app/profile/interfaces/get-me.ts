@@ -1,15 +1,8 @@
-import { User } from "../interfaces/user-interface";
+"use server";
 
-async function getMe(): Promise<User | null> {
-  try {
-    const res = await fetch("/api/me");
-    if (!res.ok) return null;
-    const data: User = await res.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
+import { get } from "@/app/common/util/fetch";
+
+
+export default async function getMe() {
+  return get("users/me", ["user"]); // Provide required tags argument
 }
-
-export default getMe;
