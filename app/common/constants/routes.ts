@@ -21,7 +21,6 @@ export const routes = [
     title: "Profile",
     path: "/profile",
   },
-  ,
   {
     title: "Orders",
     path: "/orders",
