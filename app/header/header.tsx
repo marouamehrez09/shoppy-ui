@@ -19,7 +19,7 @@ import {
   unauthenticatedRoutes,
 } from "../common/constants/routes";
 import Link from "next/link";
-import { MouseEvent, useContext, useState, useEffect } from "react";
+import { MouseEvent, useContext, useState, useEffect} from "react";
 import { useRouter } from "next/navigation";
 import getRole from "../get-role";
 

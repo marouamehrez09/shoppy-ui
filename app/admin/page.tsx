@@ -15,7 +15,6 @@ export default async function AdminOrdersPage() {
 
       {/* Statistiques */}
       <Grid container spacing={3} sx={{ mb: 4 }}>
-        <Grid item xs={12} sm={6} md={3}>
           <Card
             sx={{
               background: "linear-gradient(135deg, #1976d2, #42a5f5)",
@@ -32,9 +31,7 @@ export default async function AdminOrdersPage() {
               <Typography variant="body2">Total Registered</Typography>
             </CardContent>
           </Card>
-        </Grid>
 
-        <Grid item xs={12} sm={6} md={3}>
           <Card
             sx={{
               background: "linear-gradient(135deg, #2e7d32, #66bb6a)",
@@ -51,9 +48,7 @@ export default async function AdminOrdersPage() {
               <Typography variant="body2">Total Received</Typography>
             </CardContent>
           </Card>
-        </Grid>
 
-        <Grid item xs={12} sm={6} md={3}>
           <Card
             sx={{
               background: "linear-gradient(135deg, #9c27b0, #ba68c8)",
@@ -64,7 +59,6 @@ export default async function AdminOrdersPage() {
           >
           </Card>
         </Grid>
-      </Grid>
     </Box>
   );
 }
