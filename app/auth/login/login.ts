@@ -7,10 +7,16 @@ import { jwtDecode } from "jwt-decode";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { AUTHENTICATION_COOKIE } from "../auth-cookie";
+interface TokenPayload {
+  userId: number;
+  email: string;
+  role: string;
+  exp: number;
+}
 
 export default async function login(
   _prevState: FormResponse,
-  formData: FormData,
+  formData: FormData
 ) {
   const res = await fetch(`${API_URL}/auth/login`, {
     method: "POST",
@@ -18,13 +24,20 @@ export default async function login(
     body: JSON.stringify(Object.fromEntries(formData)),
     credentials: "include",
   });
-
+  console.log("Response headers:", res);
   const parsedRes = await res.json();
-  console.log(parsedRes);
+  console.log("parsed res ", parsedRes);
   if (!res.ok) {
     return { error: getErrorMessage({ response: parsedRes }) };
   }
-  await setAuthCookie(res); // Await the async setAuthCookie function
+  // ✅ Récupérer le token JWT depuis Set-Cookie
+  await setAuthCookie(res);
+
+  // ✅ Décoder le token pour vérifier le rôle
+  if (parsedRes.tokenPayload.role === "ADMIN") {
+    redirect("/admin");
+  }
+
   redirect("/buy_products");
 }
 

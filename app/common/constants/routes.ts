@@ -17,12 +17,14 @@ export const routes = [
     title: "Buy Products",
     path: "/buy_products",
   },
-  {
-    title: "Profile",
-    path: "/profile",
-  },
+  //{
+  //  title: "Profile",
+  //  path: "/profile",
+  //},
   {
     title: "Orders",
     path: "/orders",
   },
 ];
+
+export const adminRoutes = [{ title: "Admin Dashboard", path: "/admin" }];
