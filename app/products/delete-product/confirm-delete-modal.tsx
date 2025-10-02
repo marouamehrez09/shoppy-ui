@@ -35,9 +35,7 @@ export default function ConfirmDeleteModal({
     } catch (err: unknown) {
       // Vérifie si err est un Error avant d'accéder à message
       if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError("Unable to delete this product."); // texte en anglais
+        setError("Unable to delete this product."); 
       }
     }
   };
