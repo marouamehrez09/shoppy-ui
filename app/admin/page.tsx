@@ -1,10 +1,10 @@
 import getProducts from "@/app/products/actions/get-product";
-import getOrders from "@/app/orders/actions/get-order";
 import { Typography, Box, Card, CardContent, Grid } from "@mui/material";
+import getAllOrders from "../orders/actions/get-all-orders";
 
 export default async function AdminOrdersPage() {
   const products = await getProducts();
-  const orders = await getOrders();
+  const orders = await getAllOrders();
 
 
   return (
