@@ -16,6 +16,8 @@ import InventoryIcon from "@mui/icons-material/Inventory";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import Link from "next/link";
+import Header from "../header/header";
+import logout from "../auth/logout";
 
 const drawerWidth = 240;
 
@@ -26,10 +28,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {/* AppBar */}
       <AppBar position="fixed" sx={{ zIndex: 1201 }}>
         <Toolbar>
-          <DashboardIcon sx={{ mr: 2 }} />
           <Typography variant="h6" noWrap>
             Admin Dashboard
           </Typography>
+         <Header logout={logout} /> 
         </Toolbar>
       </AppBar>
 

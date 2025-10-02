@@ -19,7 +19,7 @@ const styles = {
 interface EditProductModalProps {
   open: boolean;
   handleClose: () => void;
-  product: { id: number; name: string; description: string; price: number };
+  product: { id: number; name: string; description: string; price: number};
 }
 
 export default function UpdateProductModal({ open, handleClose, product }: EditProductModalProps) {
@@ -44,7 +44,7 @@ export default function UpdateProductModal({ open, handleClose, product }: EditP
             <TextField name="name" label="Nom" value={form.name} onChange={handleChange} />
             <TextField name="description" label="Description" value={form.description} onChange={handleChange} />
             <TextField name="price" label="Prix" type="number" value={form.price} onChange={handleChange} />
-            <Button type="submit" variant="contained">Enregistrer</Button>
+            <Button type="submit" variant="contained">Save</Button>
           </Stack>
         </form>
       </Box>

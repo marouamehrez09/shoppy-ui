@@ -1,5 +1,4 @@
-
-import getOrders from "@/app/orders/actions/get-order";
+import getAllOrders from "@/app/orders/actions/get-all-orders";
 import {
   Table,
   TableBody,
@@ -11,12 +10,12 @@ import {
 } from "@mui/material";
 
 export default async function AdminOrdersPage() {
-  const orders = await getOrders();
+  const orders = await getAllOrders();
 
   return (
     <Paper sx={{ p: 2 }}>
       <Typography variant="h5" gutterBottom>
-      Order History
+        Order History
       </Typography>
       <Table>
         <TableHead>
@@ -33,9 +32,7 @@ export default async function AdminOrdersPage() {
               <TableCell>{o.id}</TableCell>
               <TableCell>{o.user?.email}</TableCell>
               <TableCell>{o.product?.name}</TableCell>
-              <TableCell>
-                {new Date(o.createdAt).toLocaleString()}
-              </TableCell>
+              <TableCell>{new Date(o.createdAt).toLocaleString()}</TableCell>
             </TableRow>
           ))}
         </TableBody>

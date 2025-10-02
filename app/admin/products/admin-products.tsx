@@ -13,10 +13,10 @@ import {
   Typography,
   Paper,
   Button,
+  TextField,
 } from "@mui/material";
 import UpdateProductModal from "@/app/products/update-product/update-product-modal";
 import ConfirmDeleteModal from "@/app/products/delete-product/confirm-delete-modal";
-
 
 interface Product {
   id: number;
@@ -33,6 +33,7 @@ export default function AdminProductPage({ products }: AdminOrdersPageProps) {
   const [openEdit, setOpenEdit] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [searchText, setSearchText] = useState("");
 
   const handleOpenEdit = (product: Product) => {
     setSelectedProduct(product);
@@ -65,11 +66,17 @@ export default function AdminProductPage({ products }: AdminOrdersPageProps) {
         </Typography>
         <CreateProductFab />
       </div>
+      <TextField
+        label="Search by name"
+        variant="outlined"
+        fullWidth
+        margin="normal"
+        value={searchText}
+        onChange={(e) => setSearchText(e.target.value)} />
 
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>ID</TableCell>
             <TableCell>NAME</TableCell>
             <TableCell>DESCRIPTION</TableCell>
             <TableCell>PRICE</TableCell>
@@ -77,31 +84,35 @@ export default function AdminProductPage({ products }: AdminOrdersPageProps) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {products.map((p) => (
-            <TableRow key={p.id}>
-              <TableCell>{p.id}</TableCell>
-              <TableCell>{p.name}</TableCell>
-              <TableCell>{p.description}</TableCell>
-              <TableCell>
-                {p.price.toLocaleString("fr-FR", {
-                  style: "currency",
-                  currency: "EUR",
-                })}
-              </TableCell>
-              <TableCell>
-                <Button color="warning" onClick={() => handleOpenEdit(p)}>
-                  <EditIcon />
-                </Button>
-                <Button color="error" onClick={() => handleOpenDelete(p)}>
-                  <DeleteIcon />
-                </Button>
-              </TableCell>
-            </TableRow>
-          ))}
+        {products
+                  .filter((p) =>
+                  p.name.toLowerCase().includes(searchText.toLowerCase())
+            )
+              .map((p) => (
+        <TableRow key={p.id}>
+          <TableCell>{p.name}</TableCell>
+          <TableCell>{p.description}</TableCell>
+          <TableCell>
+        {p.price.toLocaleString("fr-FR", {
+          style: "currency",
+          currency: "EUR",
+        })}
+      </TableCell>
+      <TableCell>
+        <Button color="warning" onClick={() => handleOpenEdit(p)}>
+          <EditIcon />
+        </Button>
+        <Button color="error" onClick={() => handleOpenDelete(p)}>
+          <DeleteIcon />
+        </Button>
+      </TableCell>
+    </TableRow>
+))}
+
         </TableBody>
       </Table>
 
-      {/* Modal update */}
+            {/* Modal update */}
       {selectedProduct && (
         <UpdateProductModal
           open={openEdit}

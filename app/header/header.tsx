@@ -19,7 +19,7 @@ import {
   unauthenticatedRoutes,
 } from "../common/constants/routes";
 import Link from "next/link";
-import { MouseEvent, useContext, useState, useEffect} from "react";
+import { MouseEvent, useContext, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import getRole from "../get-role";
 
@@ -48,17 +48,16 @@ export default function Header({ logout }: HeaderProps) {
     setAnchorElNav(null);
   };
 
- // ✅ routes en fonction du rôle
-let pages: { title: string; path: string }[] = [];
+  // ✅ routes en fonction du rôle
+  let pages: { title: string; path: string }[] = [];
 
-if (!isAuthenticated) {
-  pages = unauthenticatedRoutes;
-} else if (role === "ADMIN") {
-  pages = adminRoutes;
-} else {
-  pages = routes;
-}
-
+  if (!isAuthenticated) {
+    pages = unauthenticatedRoutes;
+  } else if (role === "ADMIN") {
+    pages = adminRoutes;
+  } else {
+    pages = routes;
+  }
 
   return (
     <AppBar position="static">
@@ -87,7 +86,11 @@ if (!isAuthenticated) {
 
           {/* --- Menu mobile --- */}
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton size="large" onClick={handleOpenNavMenu} color="inherit">
+            <IconButton
+              size="large"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
               <MenuIcon />
             </IconButton>
             <Menu
@@ -127,7 +130,7 @@ if (!isAuthenticated) {
             ))}
           </Box>
 
-          {isAuthenticated  && <Setting logout={logout} />}
+          {isAuthenticated && <Setting logout={logout} />}
         </Toolbar>
       </Container>
     </AppBar>
