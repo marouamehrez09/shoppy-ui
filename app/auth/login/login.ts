@@ -7,12 +7,6 @@ import { jwtDecode } from "jwt-decode";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { AUTHENTICATION_COOKIE } from "../auth-cookie";
-interface TokenPayload {
-  userId: number;
-  email: string;
-  role: string;
-  exp: number;
-}
 
 export default async function login(
   _prevState: FormResponse,
