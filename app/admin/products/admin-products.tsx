@@ -15,8 +15,9 @@ import {
   Button,
   TextField,
 } from "@mui/material";
-import UpdateProductModal from "@/app/products/update-product/update-product-modal";
+
 import ConfirmDeleteModal from "@/app/products/delete-product/confirm-delete-modal";
+import UpdateProductModal from "@/app/products/update-product/update-product-modal";
 
 interface Product {
   id: number;

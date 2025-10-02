@@ -1,9 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { Box, Button, Modal, Stack, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Modal,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import updateProductAction from "../actions/update-product";
-
 
 const styles = {
   position: "absolute" as const,
@@ -19,10 +25,14 @@ const styles = {
 interface EditProductModalProps {
   open: boolean;
   handleClose: () => void;
-  product: { id: number; name: string; description: string; price: number};
+  product: { id: number; name: string; description: string; price: number };
 }
 
-export default function UpdateProductModal({ open, handleClose, product }: EditProductModalProps) {
+export default function UpdateProductModal({
+  open,
+  handleClose,
+  product,
+}: EditProductModalProps) {
   const [form, setForm] = useState(product);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,13 +48,31 @@ export default function UpdateProductModal({ open, handleClose, product }: EditP
   return (
     <Modal open={open} onClose={handleClose}>
       <Box sx={styles}>
-        <Typography variant="h6">Modifier produit</Typography>
+        <Typography variant="h6">Edit Product</Typography>
         <form onSubmit={handleSubmit}>
           <Stack spacing={2}>
-            <TextField name="name" label="Nom" value={form.name} onChange={handleChange} />
-            <TextField name="description" label="Description" value={form.description} onChange={handleChange} />
-            <TextField name="price" label="Prix" type="number" value={form.price} onChange={handleChange} />
-            <Button type="submit" variant="contained">Save</Button>
+            <TextField
+              name="name"
+              label="Name"
+              value={form.name}
+              onChange={handleChange}
+            />
+            <TextField
+              name="description"
+              label="Description"
+              value={form.description}
+              onChange={handleChange}
+            />
+            <TextField
+              name="price"
+              label="Price"
+              type="number"
+              value={form.price}
+              onChange={handleChange}
+            />
+            <Button type="submit" variant="contained">
+              Save
+            </Button>
           </Stack>
         </form>
       </Box>
