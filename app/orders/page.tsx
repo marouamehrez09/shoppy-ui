@@ -21,7 +21,7 @@ export default async function OrdersPage() {
               <TableRow key={order.id}>
                 <TableCell>{order.product.name}</TableCell>
                 <TableCell>{order.product.description}</TableCell>
-                <TableCell>{order.product.price}€</TableCell>
+                <TableCell>{order.product.price} $</TableCell>
                 <TableCell>{new Date(order.createdAt).toLocaleDateString()}</TableCell>
               </TableRow>
             ))}

@@ -94,9 +94,9 @@ export default function AdminProductPage({ products }: AdminOrdersPageProps) {
           <TableCell>{p.name}</TableCell>
           <TableCell>{p.description}</TableCell>
           <TableCell>
-        {p.price.toLocaleString("fr-FR", {
+        {p.price.toLocaleString("en-US", {
           style: "currency",
-          currency: "EUR",
+          currency: "USD",
         })}
       </TableCell>
       <TableCell>
